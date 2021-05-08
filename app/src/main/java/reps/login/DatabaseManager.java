@@ -1,6 +1,7 @@
 package reps.login;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -46,6 +47,27 @@ public class DatabaseManager {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
             return -1;
+        }
+        return 0;
+    }
+
+
+    public static int modify(PreparedStatement query) throws Exception {
+        try{
+            query.executeUpdate();
+        } 
+        finally {
+            try {
+                if(query != null) {
+                    query.close();
+                }
+            }
+            catch (SQLException e) {
+                System.out.println("SQLException: " + e.getMessage());
+                System.out.println("SQLState: " + e.getSQLState());
+                System.out.println("VendorError: " + e.getErrorCode());
+                return -1;
+            }
         }
         return 0;
     }

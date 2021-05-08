@@ -18,7 +18,7 @@ public class DatabaseManagerTest {
         }
 
         String actual = "Himanshu Shubham anshul ";
-        assertEquals(res.toString(), actual);
+        assertEquals(actual, res.toString());
     }
 }
 
