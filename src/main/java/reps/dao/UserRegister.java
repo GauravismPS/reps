@@ -42,14 +42,14 @@ public class UserRegister {
     }
     public List<Map<String, Object>> queryByUserName() throws Exception{
         PreparedStatement pst = conn.prepareStatement(
-                "SELECT (userid, EmailId) from UserRegister where username=?"
+                "SELECT userid, EmailId from UserRegister where username=?"
         );
         pst.setString(1, userName);
         return getQuery(pst);
     }
     public List<Map<String, Object>> queryByEmailId() throws Exception{
         PreparedStatement pst = conn.prepareStatement(
-                "SELECT (userid, username) from UserRegister where emailid=?"
+                "SELECT userid, username from UserRegister where emailid=?"
         );
         pst.setString(1, emailId);
         return getQuery(pst);

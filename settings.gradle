@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'reps'
-include('app')
+// include('app')

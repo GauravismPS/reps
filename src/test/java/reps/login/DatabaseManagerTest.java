@@ -19,7 +19,7 @@ public class DatabaseManagerTest {
             res.append(" ");
         }
 
-        String actual = "Himanshu Shubham anshul ";
+        String actual = "Himanshu Shubham anshul Gaurav ";
         assertEquals(actual, res.toString());
     }
 }

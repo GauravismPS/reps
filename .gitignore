@@ -9,3 +9,6 @@ out.txt
 .settings
 bin
 *.jar
+target
+__app
+*.txt

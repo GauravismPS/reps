@@ -1,6 +1,0 @@
-digraph "sapient.codewars.solution:solutions:jar:1.0-SNAPSHOT" { 
-	"sapient.codewars.solution:solutions:jar:1.0-SNAPSHOT" -> "junit:junit:jar:4.11:test" ; 
-	"sapient.codewars.solution:solutions:jar:1.0-SNAPSHOT" -> "mysql:mysql-connector-java:jar:8.0.24:compile" ; 
-	"junit:junit:jar:4.11:test" -> "org.hamcrest:hamcrest-core:jar:1.3:test" ; 
-	"mysql:mysql-connector-java:jar:8.0.24:compile" -> "com.google.protobuf:protobuf-java:jar:3.11.4:compile" ; 
- } 

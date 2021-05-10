@@ -15,8 +15,8 @@ public class Register {
         if (uname.isEmpty())
             throw new EmptyUsernameException("Username is Empty");
         pass1 = new String(Base64.getEncoder().encode(pass1.getBytes()));
-        UserRegister reg = new UserRegister(uname, email, pass1);
-        return reg.Register();
+        UserRegister _reg = new UserRegister(uname, email, pass1);
+        return _reg.Register();
 //        Connection conn = ConnectionManager.getConnection();
 
 //        pst = conn.prepareStatement(
