@@ -2,6 +2,8 @@ package reps.login;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import reps.dbs.DatabaseManager;
+
 import java.util.List;
 import java.util.Map;
 

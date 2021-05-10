@@ -3,6 +3,8 @@ package reps.login;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import reps.dbs.ConnectionManager;
+
 import java.sql.Connection;
 
 public class ConnectionManagerTest {

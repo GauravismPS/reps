@@ -1,4 +1,6 @@
-package reps.login;
+package reps.dbs;
+
+import reps.dbs.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,21 +13,12 @@ import java.sql.ResultSetMetaData;
 public class DatabaseManager {
 
     public static List<Map<String, Object>> getQuery(String query) throws Exception {
-        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
-        Map<String, Object> row = null;
+
 
         Connection conn = ConnectionManager.getConnection();
         try (Statement smt = conn.createStatement()) {
             ResultSet rst = smt.executeQuery(query);
-            ResultSetMetaData metaData = rst.getMetaData();
-            Integer columnCount = metaData.getColumnCount();
-            while (rst.next()) {
-                row = new HashMap<String, Object>();
-                for (int i = 1; i <= columnCount; i++) {
-                    row.put(metaData.getColumnName(i), rst.getObject(i));
-                }
-                resultList.add(row);
-            }
+            return convertResultSetToList(rst);
 
 
         } catch (SQLException e) {
@@ -33,7 +26,40 @@ public class DatabaseManager {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        return null;
+    }
+
+    public static List<Map<String, Object>> convertResultSetToList(ResultSet rst) throws Exception {
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> row = null;
+        ResultSetMetaData metaData = rst.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        while (rst.next()) {
+            row = new HashMap<String, Object>();
+            for (int i = 1; i <= columnCount; i++) {
+                row.put(metaData.getColumnName(i), rst.getObject(i));
+            }
+            resultList.add(row);
+        }
         return resultList;
+    }
+
+    public static List<Map<String, Object>> getQuery(PreparedStatement query) throws Exception {
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> row = null;
+
+        Connection conn = ConnectionManager.getConnection();
+        try  {
+            ResultSet rst = query.executeQuery();
+            return convertResultSetToList(rst);
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return null;
     }
 
 

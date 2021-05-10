@@ -3,12 +3,19 @@
  */
 package reps;
 
+import reps.login.Register;
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    public int getGreeting() throws Exception {
+    
+
+        String uname = "Gaurav";
+        String email = "asd@asd";
+        String pass1 = "qwerty";
+        String pass2 = "qwerty";
+        int status = Register.reg(uname, email, pass1, pass2);
+        return status;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+
+    
 }

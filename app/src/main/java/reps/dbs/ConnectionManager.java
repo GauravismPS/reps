@@ -1,4 +1,4 @@
-package reps.login;
+package reps.dbs;
 
 import java.util.*;
 import java.io.*;
@@ -41,7 +41,8 @@ public class ConnectionManager {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        return null;
+//        return null;
 
+        throw new SQLException("Connect object is null");
     }
 }
